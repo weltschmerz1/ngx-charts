@@ -72,7 +72,7 @@ export class LineComponent implements OnChanges {
     const node = select(this.element.nativeElement).select('.line');
 
     node
-      .transition().duration(750)
+      // .transition().duration(750)
       .attr('d', this.path);
   }
 }
