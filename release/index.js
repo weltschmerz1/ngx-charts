@@ -8070,7 +8070,7 @@ var AreaComponent = (function () {
     };
     AreaComponent.prototype.animateToCurrentForm = function () {
         var node = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_d3_selection__["select"])(this.element).select('.area');
-        node.transition()
+        node
             .attr('d', this.path);
     };
     AreaComponent.prototype.getGradient = function () {
