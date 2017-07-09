@@ -15648,7 +15648,6 @@ var LineComponent = (function () {
     LineComponent.prototype.animateToCurrentForm = function () {
         var node = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_d3_selection__["select"])(this.element.nativeElement).select('.line');
         node
-            .transition().duration(750)
             .attr('d', this.path);
     };
     return LineComponent;

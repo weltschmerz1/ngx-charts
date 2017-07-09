@@ -20,7 +20,6 @@ var LineComponent = (function () {
     LineComponent.prototype.animateToCurrentForm = function () {
         var node = select(this.element.nativeElement).select('.line');
         node
-            .transition().duration(750)
             .attr('d', this.path);
     };
     return LineComponent;
