@@ -44,7 +44,7 @@ var AreaComponent = (function () {
     };
     AreaComponent.prototype.animateToCurrentForm = function () {
         var node = select(this.element).select('.area');
-        node.transition().duration(750)
+        node.transition()
             .attr('d', this.path);
     };
     AreaComponent.prototype.getGradient = function () {
