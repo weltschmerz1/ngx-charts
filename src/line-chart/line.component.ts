@@ -16,6 +16,8 @@ import {
   transition
 } from '@angular/animations';
 import { select } from 'd3-selection';
+import { line } from 'd3-shape';
+import * as simplify from 'simplify-js';
 
 @Component({
   selector: 'g[ngx-charts-line]',
@@ -71,8 +73,39 @@ export class LineComponent implements OnChanges {
   animateToCurrentForm(): void {
     const node = select(this.element.nativeElement).select('.line');
 
+    const commands = this.path.split(/(?=[LMC])/);
+
+    const coordinates = commands.map(function(d){
+      const pointsArray = d.slice(1, d.length).split(',');
+      // let pairsArray = [];
+
+      // for(let i = 0; i < pointsArray.length; i += 2){
+      //   pairsArray.push({
+      //     x: +pointsArray[i],
+      //     y: +pointsArray[i+1]
+      //   });
+      // }
+
+      // return pairsArray[0];
+
+      return {
+        x: pointsArray[0],
+        y: pointsArray[1]
+      };
+    });
+
+    const simplifiedCoordinates = simplify(coordinates, 5);
+
+    // console.log(coordinates);
+
+    const linefn = line<any>()
+      .x(function(d) { return d.x; })
+      .y(function(d) { return d.y; });
+
+    const simplifiedPath = linefn(simplifiedCoordinates);
+
     node
       // .transition().duration(750)
-      .attr('d', this.path);
+      .attr('d', simplifiedPath);
   }
 }
