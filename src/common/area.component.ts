@@ -94,7 +94,7 @@ export class AreaComponent implements OnChanges {
   animateToCurrentForm(): void {
     const node = select(this.element).select('.area');
 
-    node.transition().duration(750)
+    node.transition()
       .attr('d', this.path);
   }
 
